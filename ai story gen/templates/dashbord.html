@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Story Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/dashboard.css')}}">
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <h2>Story AI</h2>
+
+
+        <a href="{{ url_for('dash.dash_board',fun='hint') }}">💡 Story Using Hint</a>
+
+        <a href="{{ url_for('dash.dash_board',fun='draft') }}">📝 Story Using Draft</a>
+
+        <a href="{{ url_for('dash.dash_board',fun='title') }}">✨ AI Story Title</a>
+
+        <a href="{{ url_for('sign.signin_page') }}">🚪 Logout</a>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="top">
+
+            <h2>Dashboard</h2>
+
+            <div class="credit">
+
+                ⭐ Credits Left : <span>{{i[3]}}</span>
+
+            </div>
+
+        </div>
+        <form action="/dash" method="POST">
+        {% if fun=='hint' %}
+        <div class="story-box">
+        <div class="hint" id="hint">
+        <label>HINT'S</label>
+       
+        <button type="button" name="hint" value="hint" onclick="add_hint()"><i class="fa-solid fa-add"></i></button>
+        <select name="lang">
+            <Option value="english">ENGLISH</Option>
+            <option value="tamil">TAMIL</option>
+            <option value="malayalam">MALAYALAM</option>
+            <option value="hindi">HINDI</option>
+        </select>
+        <select name="story_type">
+            <option value="Adventure">Adventure</option>
+            <option value="Action">Action</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Horror">Horror</option>
+            <option value="Romance">Romance</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Historical">Historical</option>
+            <option value="Mythology">Mythology</option>
+            <option value="Fairy Tale">Fairy Tale</option>
+            <option value="Detective">Detective</option>
+            <option value="Crime">Crime</option>
+            <option value="Superhero">Superhero</option>
+            <option value="Survival">Survival</option>
+            <option value="Post-Apocalyptic">Post-Apocalyptic</option>
+            <option value="Cyberpunk">Cyberpunk</option>
+            <option value="Steampunk">Steampunk</option>
+            <option value="Time Travel">Time Travel</option>
+            <option value="Space Adventure">Space Adventure</option>
+            <option value="Zombie">Zombie</option>
+            <option value="Ghost">Ghost</option>
+            <option value="Psychological">Psychological</option>
+            <option value="Slice of Life">Slice of Life</option>
+            <option value="Coming of Age">Coming of Age</option>
+            <option value="Inspirational">Inspirational</option>
+            <option value="Educational">Educational</option>
+            <option value="Children's Story">Children's Story</option>
+        </select>
+        <input type="number" min="250" max="4000" value="800"  name="limit" class="limit">
+        <button type="submit" value="hint" name="gen">GENERATE</button>  
+         
+       </div>
+       <div>
+        <br><br>
+        <label >AI GENERATED</label>
+        <textarea placeholder="AI GENARATED STORY" readonly>{{story}}</textarea> 
+       </div></div>
+      
+
+        {% elif fun=='draft' %}
+            <div class="story-box">
+                <select name="lang">
+                <Option value="english">ENGLISH</Option>
+                <option value="tamil">TAMIL</option>
+                <option value="malayalam">MALAYALAM</option>
+                <option value="hindi">HINDI</option>
+            </select>
+            <select name="story_type">
+                <option value="Adventure">Adventure</option>
+                <option value="Action">Action</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Historical">Historical</option>
+                <option value="Mythology">Mythology</option>
+                <option value="Fairy Tale">Fairy Tale</option>
+                <option value="Detective">Detective</option>
+                <option value="Crime">Crime</option>
+                <option value="Superhero">Superhero</option>
+                <option value="Survival">Survival</option>
+                <option value="Post-Apocalyptic">Post-Apocalyptic</option>
+                <option value="Cyberpunk">Cyberpunk</option>
+                <option value="Steampunk">Steampunk</option>
+                <option value="Time Travel">Time Travel</option>
+                <option value="Space Adventure">Space Adventure</option>
+                <option value="Zombie">Zombie</option>
+                <option value="Ghost">Ghost</option>
+                <option value="Psychological">Psychological</option>
+                <option value="Slice of Life">Slice of Life</option>
+                <option value="Coming of Age">Coming of Age</option>
+                <option value="Inspirational">Inspirational</option>
+                <option value="Educational">Educational</option>
+                <option value="Children's Story">Children's Story</option>
+            </select>
+            <input type="number" min="250" max="4000" value="800"  name="limit" class="limit">
+            <label>Enter draft</label>
+            <textarea name="draft_story"></textarea>
+            <button type="submit" name="gen" value="draft">GENERATE</button>
+            <label >AI GENERATED</label>
+            <textarea placeholder="AI GENARATED STORY" readonly>{{story}}</textarea>
+        </div>
+        {% elif fun=='title' %}
+        <div class="story-box">
+            <label>Enter Title</label>
+            <input type="text" name="title">
+            
+            <div class="story-box">
+                <select name="lang">
+                <Option value="english">ENGLISH</Option>
+                <option value="tamil">TAMIL</option>
+                <option value="malayalam">MALAYALAM</option>
+                <option value="hindi">HINDI</option>
+            </select>
+            <select name="story_type">
+                <option value="Adventure">Adventure</option>
+                <option value="Action">Action</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Historical">Historical</option>
+                <option value="Mythology">Mythology</option>
+                <option value="Fairy Tale">Fairy Tale</option>
+                <option value="Detective">Detective</option>
+                <option value="Crime">Crime</option>
+                <option value="Superhero">Superhero</option>
+                <option value="Survival">Survival</option>
+                <option value="Post-Apocalyptic">Post-Apocalyptic</option>
+                <option value="Cyberpunk">Cyberpunk</option>
+                <option value="Steampunk">Steampunk</option>
+                <option value="Time Travel">Time Travel</option>
+                <option value="Space Adventure">Space Adventure</option>
+                <option value="Zombie">Zombie</option>
+                <option value="Ghost">Ghost</option>
+                <option value="Psychological">Psychological</option>
+                <option value="Slice of Life">Slice of Life</option>
+                <option value="Coming of Age">Coming of Age</option>
+                <option value="Inspirational">Inspirational</option>
+                <option value="Educational">Educational</option>
+                <option value="Children's Story">Children's Story</option>
+            </select>
+            <input type="number" min="250" max="4000" value="800"  name="limit" class="limit">
+            <button type="submit" name="gen" value="title">GENERATE</button>
+            <label >AI GENERATED</label>
+            <textarea>{{story}}</textarea>
+        </div>
+
+        {%else%}
+        <div class="story-box">
+
+            <h3>Welcome {{i[0]|upper}}</h3>
+
+            <p>
+                Select an option from the left menu to generate,
+                continue or view your stories.
+            </p>
+            
+
+        </div>
+        {% endif %}
+        </form>
+
+    </div>
+
+</div>
+<script>
+    function add_hint(){
+        hint=document.getElementById("hint");
+        let inpu=document.createElement("input");
+        inpu.type="text";
+        inpu.name="hints";
+        hint.appendChild(inpu)
+    }
+</script>
+
+</body>
+</html>
