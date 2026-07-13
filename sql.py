@@ -6,7 +6,9 @@ def connection():
     connect=con.connect(
     host="localhost",
     user=os.getenv("user"),
+    port=4000,
     password=os.getenv("sql"),
     database="story",
     charset="utf8mb4")
     return connect
+
