@@ -4,7 +4,7 @@ import os
 def connection():
     load_dotenv()
     connect=con.connect(
-    host="localhost",
+    host="gateway01.ap-southeast-1.prod.aws.tidbcloud.com",
     user=os.getenv("user"),
     port=4000,
     password=os.getenv("sql"),
