@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import random
 import os
 from sql import connection
-sign = Blueprint("sign", _name_)
+sign = Blueprint("sign", __name__)
 
 load_dotenv()
 
