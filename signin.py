@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import random
 import os
 from sql import connection
-sign = Blueprint("sign", __name__)
+sign = Blueprint("sign", _name_)
 
 load_dotenv()
 
@@ -78,10 +78,10 @@ APS AI STORY GEN Team
 
                 smtp.login(email_sender, email_password)
 
-                smtp.send_message(em)
+                smtp.send_message(em)'''
             session["user"]=[otp,name,email,password]
             return redirect(url_for('sign.otp'))
-        except smtplib.SMTPRecipientsRefused:'''
+        except smtplib.SMTPRecipientsRefused:
             return "Recipient email address was rejected."
         
         except smtplib.SMTPAuthenticationError:
