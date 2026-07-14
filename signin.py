@@ -45,7 +45,8 @@ def signup():
 
             email_sender = os.getenv("EMAIL")
             email_password = os.getenv("PASSWORD")
-
+            print(email_sender)
+            print(email_password)
             em = EmailMessage()
 
             em["From"] = email_sender
