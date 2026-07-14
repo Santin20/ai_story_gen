@@ -51,7 +51,7 @@ def signup():
             em["From"] = email_sender
             em["To"] = email
             em["Subject"] = "APS AI STORY GEN - Email Verification OTP"
-            print("hi")
+            print("hi mail")
             em.set_content(f"""
 Hello {name},
 
@@ -73,7 +73,7 @@ APS AI STORY GEN Team
              
             context = ssl.create_default_context()
 
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as smtp:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 4000, context=context,timeout=20) as smtp:
 
                 smtp.login(email_sender, email_password)
 
