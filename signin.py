@@ -74,14 +74,14 @@ APS AI STORY GEN Team
              
             context = ssl.create_default_context()
 
-            with smtplib.SMTP_SSL("smtp.gmail.com", 587, context=context,timeout=20) as smtp:
+           ''' with smtplib.SMTP_SSL("smtp.gmail.com", 587, context=context,timeout=20) as smtp:
 
                 smtp.login(email_sender, email_password)
 
                 smtp.send_message(em)
             session["user"]=[otp,name,email,password]
             return redirect(url_for('sign.otp'))
-        except smtplib.SMTPRecipientsRefused:
+        except smtplib.SMTPRecipientsRefused:'''
             return "Recipient email address was rejected."
         
         except smtplib.SMTPAuthenticationError:
