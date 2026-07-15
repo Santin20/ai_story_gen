@@ -96,17 +96,12 @@ def otp():
     cur=mydb.cursor()
     
     ud=session.get("user")
-    print(ud)
     
-    if(request.method=="POST"):
-        otp_ver=request.form.get('otp')
-        print(ud,otp_ver)
-        if(int(ud[0])==int(otp_ver)):
-            try:
-                cur.execute("insert into clients values(%s,%s,%s,%s)",(ud[1],ud[2],ud[3],"100"))
-                mydb.commit()
-            except Exception as e:
-                print(e)
-                if e.errno == 1062:
-                    print("EMAIL ALREADY EXISTS")
-    return render_template("otp_verification.html")
+    try:
+        cur.execute("insert into clients values(%s,%s,%s,%s)",(ud[1],ud[2],ud[3],"100"))
+        mydb.commit()
+    except Exception as e:
+        print(e)
+        if e.errno == 1062:
+            print("EMAIL ALREADY EXISTS")
+    return redirect(url_for("dash.dash_board"))
