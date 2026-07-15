@@ -18,7 +18,7 @@ def dash_board():
             limit=request.form.get("limit")
             story_type=request.form.get("story_type")
             response = ai.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-3.1-flash-lite",
             contents=f'''{data} I HAVE GIVEN YOU LIST OF hint FROM user PLEASE GIVE user
             A {story_type} story less than {limit} words in {lang} language note that the story generated want to have a clear starting and ending
             jumps should be connected ,add orginality
@@ -31,7 +31,7 @@ def dash_board():
             limit=request.form.get("limit")
             story_type=request.form.get("story_type")
             response = ai.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-3.1-flash-lite",
             contents=f'''{data} I HAVE GIVEN YOU DRAFT OF A STORY FROM user PLEASE GIVE user
             A {story_type} story less than {limit} words in {lang} language note that the story generated want to have a clear starting and ending
             jumps should be connected AND IN MORE ATTRACTIVE WAY,add orginality
@@ -44,7 +44,7 @@ def dash_board():
             limit=request.form.get("limit")
             story_type=request.form.get("story_type")
             response = ai.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-3.1-flash-lite",
             contents=f'''{data} I HAVE GIVEN YOU title  FROM user PLEASE GIVE user
             A {story_type} story less than {limit} words in {lang} language note that the story generated want to have a clear starting and ending
             jumps should be connected AND IN MORE ATTRACTIVE WAY,add orginality
