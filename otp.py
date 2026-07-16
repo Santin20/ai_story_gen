@@ -1,7 +1,7 @@
 from mail import Mail
 import socket
 def Otp(name,otp,mail):
-     try:
+    try:
         print(socket.gethostbyname("smtp.gmail.com"))
         print(ok)
     except Exception as e:
