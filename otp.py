@@ -1,5 +1,15 @@
 from mail import Mail
 import socket
+def test():
+  import smtplib
+  
+  print("Connecting...")
+  
+  smtp = smtplib.SMTP("smtp.gmail.com", 587, timeout=10)
+  
+  print("Connected")
+
+smtp.quit()
 def Otp(name,otp,mail):
   
     content=f"""
