@@ -2,13 +2,12 @@ import smtplib
 import ssl
 from email.message import EmailMessage
 from dotenv import load_dotenv
-import os
+import os,socket
 
 
 def Mail(reciver,subject,message):
     load_dotenv()
     context = ssl.create_default_context()
-
     print("Before SMTP")
     smtp = smtplib.SMTP_SSL(
         "smtp.gmail.com",
