@@ -20,10 +20,13 @@ def Mail(reciver,subject,message):
         em['Subject']=subject
         em.set_content(body)
         context=ssl.create_default_context()
-        with smtplib.SMTP_SSL('smtp.gmail.com',465,context=context)as smtp:
+        print("decleration is ok")
+        with smtplib.SMTP_SSL('smtp.gmail.com',465,context=context,timeout=10)as smtp:
+            print("i came")
             smtp.login(email_sender,email_password)
             smtp.sendmail(email_sender,email_reciver,em.as_string())
     except smtplib.SMTPException as e:
+        print("the error"+e)
         return False, f"SMTP Error: {e}"
     except Exception as error:
         return error
