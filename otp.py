@@ -3,7 +3,7 @@ import socket
 def Otp(name,otp,mail):
     try:
         print(socket.gethostbyname("smtp.gmail.com"))
-        print(ok)
+        print("ok")
     except Exception as e:
         print(e)
     content=f"""
