@@ -9,7 +9,7 @@ def test():
   
   print("Connected")
 
-smtp.quit()
+  smtp.quit()
 def Otp(name,otp,mail):
   
     content=f"""
