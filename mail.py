@@ -7,7 +7,16 @@ import os
 
 def Mail(reciver,subject,message):
     load_dotenv()
+    context = ssl.create_default_context()
 
+    print("Before SMTP")
+    smtp = smtplib.SMTP_SSL(
+        "smtp.gmail.com",
+        465,
+        context=context,
+        timeout=10
+    )
+    print("After SMTP")
     try:
         email_sender= os.getenv("EMAIL")
         email_password= os.getenv("PASSWORD")
@@ -21,7 +30,7 @@ def Mail(reciver,subject,message):
         em.set_content(body)
         context=ssl.create_default_context()
         print("decleration is ok")
-        with smtplib.SMTP_SSL('smtp.gmail.com',587,context=context,timeout=10)as smtp:
+        with smtplib.SMTP_SSL('smtp.gmail.com',465,context=context,timeout=10)as smtp:
             print("i came")
             smtp.login(email_sender,email_password)
             smtp.sendmail(email_sender,email_reciver,em.as_string())
