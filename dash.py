@@ -50,7 +50,7 @@ def dash_board():
             jumps should be connected AND IN MORE ATTRACTIVE WAY,add orginality
             IF LIST IS EMPTY OR NO DATA GIVEN PLEASE PRINT NO DATA GIVEN (NOTE:IT SHOULD NOT BE KNOWN AI GENERATED) PLEASE REMOVE INTRO OF QUERY")''')
             session["story"]=response.text
-            return render_template("dashbord.html",i=user,fun='draft',story=session.get("story"))
+            return render_template("dashbord.html",i=user,fun='title',story=session.get("story"))
         if(val=='save'):
             print(session.get("profile")[1])
             mydb=connection()
