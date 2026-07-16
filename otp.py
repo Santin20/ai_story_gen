@@ -1,15 +1,21 @@
 from mail import Mail
 import socket
 def test():
-  import smtplib
+  print("-----------------result----------------------")
+  try:
+      print(socket.getaddrinfo("smtp.gmail.com", 587))
   
-  print("Connecting...")
+      s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+      s.settimeout(10)
   
-  smtp = smtplib.SMTP("smtp.gmail.com", 587, timeout=10)
+      print("Connecting...")
+      s.connect(("smtp.gmail.com", 587))
+      print("Connected!")
+      s.close()
   
-  print("Connected")
-
-  smtp.quit()
+  except Exception as e:
+      print(repr(e))
+  print("----------------------end-----------------")
 def Otp(name,otp,mail):
   
     content=f"""
