@@ -21,7 +21,7 @@ def Mail(reciver,subject,message):
         em.set_content(body)
         context=ssl.create_default_context()
         print("decleration is ok")
-        with smtplib.SMTP_SSL('smtp.gmail.com',465,context=context,timeout=10)as smtp:
+        with smtplib.SMTP_SSL('smtp.gmail.com',587,context=context,timeout=10)as smtp:
             print("i came")
             smtp.login(email_sender,email_password)
             smtp.sendmail(email_sender,email_reciver,em.as_string())
