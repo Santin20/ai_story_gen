@@ -4,7 +4,7 @@ import ssl
 from email.message import EmailMessage
 from dotenv import load_dotenv
 import random
-from otp import Otp
+from otp import Otp,test
 import os
 from sql import connection
 sign = Blueprint("sign", __name__)
@@ -16,6 +16,7 @@ load_dotenv()
 def signin_page():
     email=request.form.get("email")
     password=request.form.get("password")
+    test()
     try:
         mydb=connection()
         cur=mydb.cursor()
