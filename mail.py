@@ -29,5 +29,6 @@ def Mail(reciver,subject,message):
         print("the error"+e)
         return False, f"SMTP Error: {e}"
     except Exception as error:
+        print(error)
         return error
       
