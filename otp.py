@@ -10,9 +10,6 @@ def test():
       s.close()
   except Exception as e:
       print(e)
-    
-  except Exception as e:
-        print(repr(e))
   print("----------------------end-----------------")
 def Otp(name,otp,mail):
   
