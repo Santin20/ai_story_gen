@@ -2,19 +2,17 @@ from mail import Mail
 import socket
 def test():
   print("-----------------result----------------------")
+  
+    
   try:
-      print(socket.getaddrinfo("smtp.gmail.com", 587))
-  
-      s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-      s.settimeout(10)
-  
-      print("Connecting...")
-      s.connect(("smtp.gmail.com", 587))
-      print("Connected!")
+      s = socket.create_connection(("smtp.office365.com", 587), timeout=10)
+      print("Office365 Connected")
       s.close()
-  
   except Exception as e:
-      print(repr(e))
+      print(e)
+    
+    except Exception as e:
+        print(repr(e))
   print("----------------------end-----------------")
 def Otp(name,otp,mail):
   
