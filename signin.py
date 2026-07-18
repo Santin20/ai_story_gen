@@ -4,7 +4,7 @@ import ssl
 from email.message import EmailMessage
 from dotenv import load_dotenv
 import random
-from otp import Otp,test
+from otp import Otp
 import os
 from sql import connection
 sign = Blueprint("sign", __name__)
