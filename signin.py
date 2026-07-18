@@ -16,7 +16,6 @@ load_dotenv()
 def signin_page():
     email=request.form.get("email")
     password=request.form.get("password")
-    test()
     try:
         mydb=connection()
         cur=mydb.cursor()
