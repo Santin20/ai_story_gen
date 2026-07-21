@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='css/signin.css')}}">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6724127977861382"
-     crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}">
+
+    <!-- Google AdSense Verification -->
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6724127977861382"
+        crossorigin="anonymous">
+    </script>
+
 </head>
 <body>
 
@@ -45,19 +51,7 @@
             Don't have an account?
             <a href="{{ url_for('sign.signup') }}">Register</a>
         </div>
-        
-    <div class="ad-container">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-1234567890123456"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
 
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
     </div>
 </div>
 
