@@ -15,6 +15,7 @@ lis=[]
 ai=genai.Client(api_key=os.getenv("api_key"))
 dash=Blueprint("dash",__name__)
 @dash.route("/dash",methods=["GET","POST"])
+@login_required
 def dash_board():
     
     @wraps(f)
