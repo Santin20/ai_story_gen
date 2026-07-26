@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/reset_pass.css')}}">
+</head>
+<body>
+
+<div class="reset-box">
+
+    <h1>Reset Password</h1>
+
+    <p>Create a new password for your account.</p>
+
+    <form action="/reset_pass" method="POST" onsubmit="return validatePassword()">
+
+        <div class="input-box">
+
+            <label>New Password</label>
+
+            <input
+                type="password"
+                id="pass"
+                name="password"
+                placeholder="Enter new password"
+                required>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Confirm Password</label>
+
+            <input
+                type="password"
+                id="cpass"
+                name="confirm_password"
+                placeholder="Confirm password"
+                onkeyup="checkPassword()"
+                required>
+
+            <small id="msg"></small>
+
+        </div>
+
+        <button type="submit">
+
+            RESET PASSWORD
+
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+
+function checkPassword(){
+
+    let pass=document.getElementById("pass").value;
+    let cpass=document.getElementById("cpass").value;
+    let msg=document.getElementById("msg");
+
+    if(cpass==""){
+
+        msg.innerHTML="";
+
+    }
+
+    else if(pass==cpass){
+
+        msg.innerHTML="✔ Password Matched";
+        msg.style.color="#22C55E";
+
+    }
+
+    else{
+
+        msg.innerHTML="✖ Password Not Matched";
+        msg.style.color="#EF4444";
+
+    }
+
+}
+
+function validatePassword(){
+
+    let pass=document.getElementById("pass").value;
+    let cpass=document.getElementById("cpass").value;
+
+    if(pass!=cpass){
+
+        alert("Passwords do not match!");
+        return false;
+
+    }
+
+    return true;
+
+}
+
+</script>
+
+</body>
+</html>

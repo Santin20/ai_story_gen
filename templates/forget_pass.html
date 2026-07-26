@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forget_pass.css') }}">
+</head>
+<body>
+
+<div class="forgot-box">
+
+    <h1>Forgot Password</h1>
+
+    <p>
+        Enter your registered email address to receive an OTP for resetting your password.
+    </p>
+
+    <form action="/forgot_password" method="POST">
+
+        <div class="input-box">
+
+            <label>Email Address</label>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required>
+
+        </div>
+
+        <button type="submit">
+            SEND OTP
+        </button>
+
+    </form>
+
+    <div class="login">
+
+        Remember your password?
+         
+        <a href="{{url_for('sign.signin_page')}}">
+            Sign In
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
