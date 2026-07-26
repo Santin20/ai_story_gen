@@ -16,8 +16,12 @@ dash=Blueprint("dash",__name__)
 @dash.route("/dash",methods=["GET","POST"])
 def dash_board():
     
-    if("uid" not in session):
-        return redirect(url_for("sign.signin_page"))
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if "user_id" not in session:
+            return redirect(url_for("sign.signin"))
+        return f(*args, **kwargs)
+    return wrapper
     langs= {
     "english": "en-US-GuyNeural",
     "tamil": "ta-IN-ValluvarNeural",
