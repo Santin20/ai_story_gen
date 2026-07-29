@@ -36,7 +36,6 @@ def signin_page():
             else:
                 return render_template("sign_in.html")
     except Exception as e:
-        print(email)
         if(email!=None):
             return render_template("sign_in.html",i="true")
         else:
@@ -67,23 +66,23 @@ def otp():
     cur=mydb.cursor()
     
     ud=session.get("user")
-    print(ud)
+  
     
     if(request.method=="POST"):
         otp_ver=request.form.get('otp')
-        print(ud,otp_ver)
+       
         if(int(ud[0])==int(otp_ver)):
             try:
                 cur.execute("insert into clients values(%s,%s,%s,%s)",(ud[1],ud[2],ud[3],"100"))
                 mydb.commit()
                 return redirect(url_for("sign.signin_page"))
             except Exception as e:
-                print(e)
+               
                 if e.errno == 1062:
 
                     flash("Email already exists.", "error")
                     return redirect(url_for("sign.signin_page"))
-                    print("EMAIL ALREADY EXISTS")
+                    
                 
     return render_template("otp_verification.html")
 
@@ -92,7 +91,7 @@ def forget():
     if(request.method=="POST"):
         email=request.form.get("email")
         session["mail_id"]=email
-        print("email")
+       
         session["fotp"]=random.randint(100000,999999)
         Otp1(session.get("fotp"),email)
         return redirect(url_for("sign.fotp_v"))
@@ -101,7 +100,7 @@ def forget():
 def fotp_v():
     if(request.method=='POST'):
         inotp=request.form.get("otp")
-        print(inotp)
+     
         if(int(inotp)==int(session.get("fotp"))):
             return redirect(url_for("sign.reset"))
         else:
